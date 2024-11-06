@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Center</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- i use this for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    
+</head>
+
+<body class="light-mode">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#home" class="nav-logo">
+            <i class="fas fa-paw"></i> Pet Adoption Center
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#pets">Available Pets</a></li>
+            <li><a href="#calculator">Care Calculator</a></li>
+            <li><a href="#inquiry">Adoption Inquiry</a></li>
+            <li>
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </li>
+        </ul>
+        <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1 class="slide-in">Find Your Perfect Companion</h1>
+            <p class="slide-in-delayed">Give them the forever home they deserve</p>
+            <a href="#pets" class="cta-button slide-in-delayed">Meet Our Pets</a>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item slide-in">
+                <i class="fas fa-home"></i>
+                <h3>500+</h3>
+                <p>Pets Adopted</p>
+            </div>
+            <div class="stat-item slide-in-delayed">
+                <i class="fas fa-heart"></i>
+                <h3>1000+</h3>
+                <p>Happy Families</p>
+            </div>
+            <div class="stat-item slide-in-delayed">
+                <i class="fas fa-medal"></i>
+                <h3>10+</h3>
+                <p>Years Experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alll Pets Section -->
+    <section id="pets" class="pets-section">
+        <h2 class="section-title">Meet Our Adorable Pets</h2>
+        <div class="pets-filter">
+            <button class="filter-btn active" data-filter="all">All Pets</button>
+            <button class="filter-btn" data-filter="dog">Dogs</button>
+            <button class="filter-btn" data-filter="cat">Cats</button>
+            
+        </div>
+        <div class="pets-container">
+            <div class="pet-card slide-in-left" data-category="dog">
+                <div class="pet-image">
+                    <img src="img/dog1.jpg" alt="Buddy">
+                    <div class="pet-badge">Available</div>
+                </div>
+                <div class="pet-info">
+                    <h3>Buddy</h3>
+                    <p class="pet-breed">Golden Retriever</p>
+                    <div class="pet-details">
+                        <span><i class="fas fa-birthday-cake"></i> 1.2 years</span>
+                        <span><i class="fas fa-venus-mars"></i> Male</span>
+                    </div>
+                    <button class="adopt-button">Adopt Me</button>
+                </div>
+            </div>
+
+            <div class="pet-card slide-in-right" data-category="cat">
+                <div class="pet-image">
+                    <img src="img/cat1.jpg" alt="Luna">
+                    <div class="pet-badge">Available</div>
+                </div>
+                <div class="pet-info">
+                    <h3>Luna</h3>
+                    <p class="pet-breed">Persian Cat</p>
+                    <div class="pet-details">
+                        <span><i class="fas fa-birthday-cake"></i> 1.5 years</span>
+                        <span><i class="fas fa-venus-mars"></i> Female</span>
+                    </div>
+                    <button class="adopt-button">Adopt Me</button>
+                </div>
+            </div>
+
+            <div class="pet-card slide-in-left" data-category="dog">
+                <div class="pet-image">
+                    <img src="img/dog2.jpg" alt="Rio">
+                    <div class="pet-badge">Available</div>
+                </div>
+                <div class="pet-info">
+                    <h3>Rio</h3>
+                    <p class="pet-breed">Macaw</p>
+                    <div class="pet-details">
+                        <span><i class="fas fa-birthday-cake"></i> 1 year</span>
+                        <span><i class="fas fa-venus-mars"></i> Male</span>
+                    </div>
+                    <button class="adopt-button">Adopt Me</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Care Cost Calculator -->
+    <section id="calculator" class="calculator-section">
+        <h2 class="section-title">Pet Care Cost Calculator</h2>
+        <div class="calculator-container">
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="pet-type">Select Pet Type:</label>
+                    <select id="pet-type" class="form-control">
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="food-cost">Monthly Food Cost ($):</label>
+                    <input type="number" id="food-cost" class="form-control" placeholder="Enter food cost">
+                </div>
+
+                <div class="form-group">
+                    <label for="medical-cost">Monthly Medical Cost ($):</label>
+                    <input type="number" id="medical-cost" class="form-control" placeholder="Enter medical cost">
+                </div>
+
+                <div class="form-group">
+                    <label for="supplies-cost">Monthly Supplies Cost ($):</label>
+                    <input type="number" id="supplies-cost" class="form-control" placeholder="Enter supplies cost">
+                </div>
+
+                <button onclick="calculateCost()" class="calculate-button">Calculate Total Cost</button>
+            </div>
+
+            <div class="cost-result">
+                <div id="total-cost" class="total-cost">
+                    <h3>Total Monthly Cost</h3>
+                    <span class="cost-amount">$0.00</span>
+                </div>
+                <div class="cost-breakdown">
+                    <h4>Cost Breakdown</h4>
+                    <ul id="cost-breakdown-list">
+                        <li>Base Care: <span id="base-cost">$0.00</span></li>
+                        <li>Food: <span id="food-cost-result">$0.00</span></li>
+                        <li>Medical: <span id="medical-cost-result">$0.00</span></li>
+                        <li>Supplies: <span id="supplies-cost-result">$0.00</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  Form  -->
+    <section id="inquiry" class="inquiry-section">
+        <h2 class="section-title">Adoption Inquiry</h2>
+        <div class="inquiry-container">
+            <form id="inquiry-form" class="inquiry-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pet-interest">Pet of Interest:</label>
+                        <input type="text" id="pet-interest" class="form-control" placeholder="e.g., Buddy">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Home Address:</label>
+                    <textarea id="address" class="form-control" rows="2" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Why do you want to adopt this pet?</label>
+                    <textarea id="message" class="form-control" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    <span class="button-text">Submit Inquiry</span>
+              
+                    <span class="button-icon"><i class="fas fa-paper-plane"></i></span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Pet Street,xyz</p>
+                <p><i class="fas fa-phone"></i>+1234567890</p>
+                <p><i class="fas fa-envelope"></i> adoptioncenter@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#pets">Available Pets</a></li>
+                    <li><a href="#calculator">Cost Calculator</a></li>
+                    <li><a href="#inquiry">Adoption Process</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pet Adoption Center. All rights reserved.</p>
+        </div>
+    </footer>
+
+    
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loader">
+            <i class="fas fa-paw"></i>
+        </div>
+    </div>
+
+    
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <i class="fas fa-check-circle"></i>
+            <h3>Thank You!</h3>
+            <p>Your inquiry has been submitted successfully. We'll contact you soon!</p>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
